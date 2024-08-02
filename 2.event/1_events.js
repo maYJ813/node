@@ -11,3 +11,4 @@ emitter.on("why", handleWhy); // 监听
 setTimeout(() => {
   emitter.emit("why", "why1", 18, 121);
 }, 2000);
+
