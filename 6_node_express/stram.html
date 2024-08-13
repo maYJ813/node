@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="example"></div>
+<script >
+let source = new EventSource('http://localhost:3000/sse')
+let _div = document.getElementById('example')
+
+source.onopen = function (event){
+  _div.innerHTML ='<p>开始连接...</p>'
+}
+source.onerror = function (event){
+  _div.innerHTML ='<p>关闭连接...</p>'
+}
+
+source.onmessage = function (event) {
+  _div.innerHTML += '<p>Ping: ' + event.data + '</p>'
+}
+</script>
+</body>
+</html>
