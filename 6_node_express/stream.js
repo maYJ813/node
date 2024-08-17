@@ -9,6 +9,8 @@ const server = http.createServer((req, res) => {
       'Connection': 'keep-alive',
       'Access-Control-Allow-Origin': '*'
     })
+    res.write('retry: 10000\n')
+    res.write('event: connecttime\n')
     let interval = setInterval(() => {
       res.write(`data: ${new Date().toLocaleTimeString()}\n\n`);
     },1000)
