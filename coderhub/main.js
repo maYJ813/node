@@ -1,13 +1,13 @@
 
 
 const Koa = require('koa')
-const port = 3000
-const app = new Koa()
+const {SERVER_PORT} = require('./config/server')
 const bodyParser = require('koa-bodyparser')
-app.use(bodyParser())
 const Router = require('@koa/router')
-const userRouter = new Router({prefix:'/users'})
 
+const app = new Koa()
+app.use(bodyParser())
+const userRouter = new Router({prefix:'/users'})
 
 userRouter.get('/list',(ctx,next) => {
   ctx.body ='user list'
@@ -18,6 +18,6 @@ app.use(userRouter.allowedMethods())
 
 
 
-app.listen(port,()=>{
-  console.log(`Server running at http://localhost:${port}`)
+app.listen(SERVER_PORT,()=>{
+  console.log(`Server running at http://localhost:${SERVER_PORT}`)
 })
