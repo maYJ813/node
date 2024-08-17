@@ -8,6 +8,7 @@ const fs = require('fs');
 const router = new Router({prefix: '/users'})
 
 router.get('/', (ctx, next) => {
+  debugger;
   // 1.字符串类型
   // ctx.body='get user'
   // 2.buffer
