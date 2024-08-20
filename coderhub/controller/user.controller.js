@@ -1,11 +1,10 @@
+const userService = require('../service/user.service')
 
-const userService =require('../service/user.service')
 class UserController {
-
-    //   1创建用户
-  createUser(ctx, next) {
+  //   1创建用户
+  async createUser(ctx, next){
     // 获取请求参数
-    const {username,password} = ctx.request.body;
+    const {name, password} = ctx.request.body;
     // 2 验证参数
     // if (!username ||!password) {
     //   return ctx.status(400).json({
@@ -13,7 +12,11 @@ class UserController {
     //   });
     // }
     // 3创建并保存用户
-    userService.create({username,password})
+    let result = await userService.create({name, password});
+    ctx.body = {
+      message: 'Create user success',
+      data: result
+    }
   }
 }
 
