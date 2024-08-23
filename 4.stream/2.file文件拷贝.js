@@ -8,8 +8,8 @@ fs.readFile('./aa.txt', { encoding: 'utf-8' }, (err, data)=>{
   })
 })
 // 2以流的方式读写
-const rs = fs.createReadStream('./aa.txt', );
-const ws = fs.createWriteStream('./cc.txt', { encoding: 'utf-8' });
+const rs = fs.createReadStream('./aa.txt', ); // 创建可读流
+const ws = fs.createWriteStream('./cc.txt', { encoding: 'utf-8' }); // 写入可读流
 
 // rs.on('data', (chunk) => {
 //   console.log('chunk', chunk.toString());
