@@ -15,7 +15,7 @@ class UserController {
     let result = await userService.create({name, password});
     ctx.body = {
       message: 'Create user success',
-      data: result
+      data: result[0]
     }
   }
 }
