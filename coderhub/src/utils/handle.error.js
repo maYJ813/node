@@ -3,7 +3,6 @@ const {NAME_OR_PASSWORD_IS_REQUIRED, NAME_IS_EXISTS} = require("../config/error"
 
 // 错误封装
 app.on('error', (error, ctx) => {
-    console.log('error', error)
     let code = 0;
     let message = '';
     switch (error) {
