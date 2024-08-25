@@ -1,4 +1,5 @@
 const userService = require('../service/user.service')
+const {NAME_OR_PASSWORD_IS_REQUIRED, NAME_IS_EXISTS} = require("../config/error");
 
 // user校验
 const verifyUser =async(ctx,next)=>{
@@ -10,16 +11,17 @@ const verifyUser =async(ctx,next)=>{
         //     code:-1001,
         //     message:'用户名和密码不能为空！',
         // }
-        return ctx.app.emit('error','name_or_password_is_required',ctx);
+        return ctx.app.emit('error',NAME_OR_PASSWORD_IS_REQUIRED,ctx);
     }
     //2.2 用户是否存在
     let users =await userService.findUserByName(name);
     console.log('users',users)
     if(users.length > 0){
-        return ctx.body={
-            code:-1002,
-            message:'用户名已存在！',
-        }
+        // return ctx.body={
+        //     code:-1002,
+        //     message:'用户名已存在！',
+        // }
+        return ctx.app.emit('error',NAME_IS_EXISTS,ctx);
     }
     await next();
 }
