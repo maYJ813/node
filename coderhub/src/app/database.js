@@ -21,7 +21,7 @@ connectPool.getConnection((err, connection) => {
     if ( err ) {
       console.log('数据库交互失败', err)
     } else {
-      console.log('数据库连接车成功')
+      console.log('数据库连接成功')
     }
 
   })
