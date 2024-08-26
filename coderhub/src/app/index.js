@@ -1,16 +1,17 @@
 const Koa = require('koa')
 const bodyParser = require('koa-bodyparser')
-// user路由
-const userRouter = require('../router/user.router.js')
-// const registerRoutes = require('../router')
+
+const useRoutes = require('../router')
+const errorHandle = require('./error-handle')
+
+
 const app = new Koa()
+
+app.useRoutes = useRoutes;
 // 中间件注册
 app.use(bodyParser())
-// // user 路由
-app.use(userRouter.routes())
-app.use(userRouter.allowedMethods())
-// registerRoutes(app)
+app.useRoutes();
 
-
+app.on('error', errorHandle)
 
 module.exports = app
