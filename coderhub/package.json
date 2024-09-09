@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@koa/router": "^13.0.0",
+    "canvas": "^2.11.2",
     "dotenv": "^16.4.5",
     "jimp": "^0.22.12",
     "jsonwebtoken": "^9.0.2",
