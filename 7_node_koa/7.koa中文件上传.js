@@ -19,7 +19,7 @@ const upload =multer({
 })
 const router = new Router({prefix: '/upload'});
 
-// 单文件上传
+// 单文件上传 参数 avatar
 router.post('/avatar', upload.single('avatar'), async (ctx, next) => {
   // console.log(ctx.request.file);
   ctx.body = 'File uploaded successfully!';

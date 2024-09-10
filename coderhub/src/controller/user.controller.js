@@ -6,7 +6,12 @@ class UserController {
     // 获取请求参数
     const user = ctx.request.body;
     // 查询数据 并返回数据
-    return ctx.body = await userService.create(user);
+    const result = await userService.create(user);
+    ctx.body = {
+      code: 0,
+      message: '创建成功',
+      data: result
+    };
   }
 
   async avatarInfo(){

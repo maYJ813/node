@@ -12,7 +12,6 @@ class UserService {
     // 3.执行sql语句  ? 将被name password 替换
     let result = await connection.execute(statement, [name, password])
     return result[0];
-
   }
 
 //   查询用户

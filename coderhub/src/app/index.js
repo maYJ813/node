@@ -6,7 +6,6 @@ const errorHandle = require('../utils/error-handle')
 
 
 const app = new Koa()
-
 app.useRoutes = useRoutes;
 // 中间件注册
 app.use(bodyParser())
