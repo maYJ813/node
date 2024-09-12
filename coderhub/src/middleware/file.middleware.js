@@ -15,12 +15,23 @@ const pictureUpload = Multer({
 const pictureHandler = pictureUpload.array('picture', 9);
 
 const pictureResize = async (ctx, next) => {
+  debugger;
   try {
     // 1.获取所有的图像信息
-    const files = ctx.req.files;
+    // const files = ctx.req.files;
+    const files = ctx.files;
 
     // 2.对图像进行处理(sharp/jimp)
-    for (let file of files) {
+    // for (let file of files) {
+    //   const destPath = path.join(file.destination, file.filename);
+    //   console.log(destPath);
+    //   Jimp.read(file.path).then(image => {
+    //     image.resize(1280, Jimp.AUTO).write(`${destPath}-large`);
+    //     image.resize(640, Jimp.AUTO).write(`${destPath}-middle`);
+    //     image.resize(320, Jimp.AUTO).write(`${destPath}-small`);
+    //   });
+    // }
+    files.forEach(file=>{
       const destPath = path.join(file.destination, file.filename);
       console.log(destPath);
       Jimp.read(file.path).then(image => {
@@ -28,7 +39,7 @@ const pictureResize = async (ctx, next) => {
         image.resize(640, Jimp.AUTO).write(`${destPath}-middle`);
         image.resize(320, Jimp.AUTO).write(`${destPath}-small`);
       });
-    }
+    })
 
     await next();
   } catch (error) {

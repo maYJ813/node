@@ -1,4 +1,3 @@
-
 const jwt = require('jsonwebtoken');
 const errorTypes = require('../config/error')
 const userService = require('../service/user.service')
@@ -54,7 +53,7 @@ const verifyAuth = async (ctx, next) => {
   console.log("验证授权的middleware~");
   // 1.获取token
   const authorization = ctx.headers.authorization;
-  if (!authorization) {
+  if ( !authorization ) {
     const error = new Error(errorTypes.UNAUTHORIZATION);
     return ctx.app.emit('error', error, ctx);
   }
@@ -67,8 +66,8 @@ const verifyAuth = async (ctx, next) => {
     });
     ctx.user = result;
     await next();
-  } catch (err) {
-    console.log('err',err)
+  } catch(err){
+    console.log('err', err)
     const error = new Error(errorTypes.UNAUTHORIZATION);
     ctx.app.emit('error', error, ctx);
   }

@@ -1,4 +1,7 @@
+const fs = require('fs')
 const userService = require('../service/user.service')
+const fileService = require('../service/file.service')
+const {AVATAR_PATH} = require('../config/file-path')
 
 class UserController {
     //  1创建用户
@@ -14,8 +17,21 @@ class UserController {
     };
   }
 
-  async avatarInfo(){
-
+  // 用户信息
+  async avatarInfo(ctx,next){
+    // debugger
+    // 获取用户id
+    const { userId } = ctx.params;
+    // 查询头像数据
+    const avatarInfo = await fileService.getAvatarByUserId(userId);
+    // // 响应头像数据
+    // ctx.body = avatarInfo;
+    const {filename,mimetype} = avatarInfo
+    console.log('avatarInfo',avatarInfo)
+    ctx.type  = mimetype;
+    let result = fs.createReadStream(`${AVATAR_PATH}/${filename}`)
+    console.log('result',result)
+    ctx.body = result
   }
 }
 

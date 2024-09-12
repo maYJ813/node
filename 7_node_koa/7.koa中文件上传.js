@@ -21,6 +21,10 @@ const router = new Router({prefix: '/upload'});
 
 // 单文件上传 参数 avatar
 router.post('/avatar', upload.single('avatar'), async (ctx, next) => {
+  console.log('avatar',ctx);
+  console.log('avatar1',ctx.request.file);
+  console.log('avatar2',ctx.req.file);
+  console.log('avatar3',ctx.file);
   // console.log(ctx.request.file);
   ctx.body = 'File uploaded successfully!';
 })
