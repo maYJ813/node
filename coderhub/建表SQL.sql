@@ -203,3 +203,4 @@ INSERT INTO moment (content, user_id) VALUES ('因为爱过，所以慈悲；因
 INSERT INTO moment (content, user_id) VALUES ('我们听过无数的道理，却仍旧过不好这一生。', 1);
 INSERT INTO moment (content, user_id) VALUES ('我来不及认真地年轻，待明白过来时，只能选择认真地老去。', 2);
 
+

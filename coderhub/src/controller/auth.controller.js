@@ -3,6 +3,9 @@ const jwt = require('jsonwebtoken');
 const {PRIVATE_KEY} = require('../app/config');
 
 class AuthController {
+/*
+*用户登录
+*/
   async login(ctx, next){
 
     const {id, name} = ctx.user;
@@ -12,6 +15,7 @@ class AuthController {
     }catch(e){
       console.log('e',e)
     }
+
   }
   async success(ctx, next) {
     ctx.body = "授权成功~";
